@@ -89,14 +89,16 @@ def generate_spiral_matrix(n):
     if n % 2 == 0:
         raise ValueError("N must be an even number")
 
-    
+    m = [[0 for _ in range(n)] for _ in range(n)]
 
+    return m
 
 
 
 def problem4():
     """ Spiral Matrix """
 
+    print("Spiral matrix: ", generate_spiral_matrix(3))
 
 
 def problem5c_demo():
@@ -122,7 +124,7 @@ def problem5c_demo():
 # ======  RUNNING PROBLEM FUNCTIONS BELOW  =======
 
 # problem5c_demo()
-# problem4()
+problem4()
 # problem3()
 # problem2()
 # problem1()
