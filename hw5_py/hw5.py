@@ -87,9 +87,35 @@ def problem3():
 
 def generate_spiral_matrix(n):
     if n % 2 == 0:
-        raise ValueError("N must be an even number")
+        raise ValueError("N must be an odd integer")
 
     m = [[0 for _ in range(n)] for _ in range(n)]
+
+    steps = n*n
+    middle = n // 2
+    k = 0
+
+    m[middle][middle] = 1
+
+    while steps > 1 and k < middle:
+        for i in range(k, n-1):
+            m[i][k] = steps
+            steps -= 1
+
+        for i in range(k, n-1):
+            m[n-1][i] = steps
+            steps -= 1
+
+        for i in range(1+k, n)[::-1]:
+            m[i][n-1] = steps
+            steps -= 1
+
+        for i in range(1+k, n)[::-1]:
+            m[k][i] = steps
+            steps -= 1
+
+        n -= 1 
+        k += 1
 
     return m
 
@@ -98,7 +124,7 @@ def generate_spiral_matrix(n):
 def problem4():
     """ Spiral Matrix """
 
-    print("Spiral matrix: ", generate_spiral_matrix(3))
+    save_martrix_to_file('p4.txt', generate_spiral_matrix(7))
 
 
 def problem5c_demo():
@@ -120,11 +146,12 @@ def problem5c_demo():
 
     print("Loaded matrix: ", loaded1)
     print("Loaded matrix: ", loaded2)
+    print("Sum of first elements (2): ", loaded2[0][0] + loaded1[0][0])
 
 # ======  RUNNING PROBLEM FUNCTIONS BELOW  =======
 
 # problem5c_demo()
-problem4()
+# problem4()
 # problem3()
 # problem2()
-# problem1()
+problem1()

@@ -14,7 +14,10 @@ def save_martrix_to_file(path, m):
         for i, l in enumerate(m):
 
             for j in range(len(l)):
-                l[j] = str(l[j])
+                if l[j] < 10:
+                    l[j] = " {0}".format(l[j])
+                else:
+                    l[j] = str(l[j])
 
             f.write(",".join(l))
 
